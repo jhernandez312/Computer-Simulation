@@ -79,6 +79,85 @@ The repository is organized into several Python modules for clarity and modulari
 - O’Leary, D. *Scientific Computing with Case Studies*. SIAM, 2009.
 
 ---
+## NYC Bike Share Simulation
+# Mini-project 3: NYC Bike Share
+
+
+This project implements a discrete-event simulation to study Citi Bike—New York City’s bike-sharing service. The goal is to build a simulation model that helps the NYC mayor and city planners determine how to best allocate a fixed number of bikes among the city’s stations to meet demand. The simulation is based on real-world data from Citi Bike usage and involves modeling rider arrivals, station selections, bike usage, and trip durations.
+
+## Tasks
+
+1. **Simulator Implementation:**  
+   - **Time Frame:** Simulate one logical day (24 hours) of operation.  
+   - **Stations:** Model each station as a queue.  
+   - **Rider Arrivals:**  
+     - Total number of riders \(n\) arriving randomly according to an exponential interarrival process with mean rate \(\lambda\).  
+     - Each rider selects a station with a probability \(p_i\) from `start_station_probs.csv`.  
+   - **Bike Rental Process:**  
+     - If a bike is available at the chosen station, the rider takes it; otherwise, they wait (simulate unlimited queue capacity).  
+   - **Trip Dynamics:**  
+     - The destination station is chosen based on probabilities \(q_{i,j}\) derived from `trip_stats.csv`.  
+     - Ride times are drawn from a log-normal distribution with mean \(\mu\) and standard deviation \(\sigma\).  
+   - After finishing a trip, the rider returns the bike and leaves the system.
+
+2. **Baseline Experiment:**  
+   - With a fixed allocation of 10 bikes per station and 3,500 riders:
+     - Estimate the **probability of a successful rental** (fraction of riders who pick up a bike).
+     - Compute the **average waiting time** for riders who successfully get a bike.
+     - Compute 90% confidence intervals for these estimates.
+   - **Simulation Parameters:**
+     - \(\lambda = 2.38\) riders per minute.
+     - Ride times: \(\mu = 2.78\) and \(\sigma = 0.619\).
+     - Start station probabilities from `start_station_probs.csv` and destination probabilities \(q_{i,j}\) derived from `trip_stats.csv`.
+
+3. **Idealized Experiment:**  
+   - Investigate a scenario with no limit on the number of bikes per station.
+   - Determine, for each station, the minimum number of bikes needed to fully meet demand.
+
+4. **(Pairs Only) Assumption Verification (Task 4):**  
+   - Analyze the system-wide interarrival times using raw trip data from `raw_trips.csv`.
+   - Assess whether the interarrival times are stationary, independent, and exponentially distributed.
+
+## File Structure
+
+
+
+## How to Run
+
+1. **Prerequisites:**  
+   - Python 3.x  
+   - Required libraries: `numpy`, `pandas`, `matplotlib`, `scipy`
+
+2. **Setup:**  
+   - Place the data files (`start_station_probs.csv`, `trip_stats.csv`, and, if applicable, `raw_trips.csv`) in the appropriate folder.
+   - Install required libraries via pip if necessary:
+     ```bash
+     pip install numpy pandas matplotlib scipy
+     ```
+
+3. **Execute the Simulation:**  
+   - From the project root directory, run:
+     ```bash
+     python main.py
+     ```
+   - This script will execute the simulation experiments and display the resulting plots and statistics.
+
+## Verification & Findings
+
+- **Verification:**  
+  The simulation code was verified by comparing system performance metrics (e.g., successful rental probability and rider waiting time) against theoretical expectations and validating against the provided Citi Bike usage data.
+
+- **Summary of Results:**  
+  - The baseline experiment yields estimates for the probability of successful rentals and average waiting time (with 90% confidence intervals).
+  - The idealized experiment illustrates the minimum required bikes per station to meet full demand.
+  - For the pairs assignment, the analysis of raw trip data provides insights into arrival process assumptions and interarrival time distributions.
+
+## References
+
+- Citi Bike NYC: [https://citibikenyc.com/](https://citibikenyc.com/)
+
+
+---
 ## Traffic Simulation
 
 ## Overview
