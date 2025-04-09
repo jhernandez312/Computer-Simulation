@@ -51,8 +51,6 @@ The repository is organized into several Python modules for clarity and modulari
 - **`main.py`**:  
   Combines the simulation and plotting modules to run experiments and generate figures.
 
-- **(Optional) `config.py`**:  
-  Contains global parameters and configuration settings.
 
 ## How to Run
 
