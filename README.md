@@ -25,16 +25,6 @@ This project simulates infectious disease dynamics using a well-mixed SIR model 
    - Sweep across values of \(\tau \in (0, 4]\) and \(\kappa \in [1, 5]\).  
    - Create a contour plot or heatmap showing the time required for \(I(t)\) to drop below \(10^{-4}\).
 
-4. **Vaccination Extension (For Teams Only):**  
-   - Extend the model by adding a fourth compartment for vaccinated individuals \(V(t)\) with the conservation law:
-     \[
-     S + I + R + V = 1
-     \]
-   - Implement and compare two vaccination policies:
-     - **Policy 1:** \(g_1(x) = \nu_1 S\)
-     - **Policy 2:** \(g_2(x) = \nu_2 \frac{SI}{S+I}\)
-   - Simulate and compare the performance of these vaccination strategies, examining trade-offs among the number vaccinated, infected, and overall epidemic duration.
-
 ## File Structure
 
 The repository is organized into several Python modules for clarity and modularity:
@@ -114,9 +104,6 @@ This project implements a discrete-event simulation to study Citi Bike—New Yor
    - Investigate a scenario with no limit on the number of bikes per station.
    - Determine, for each station, the minimum number of bikes needed to fully meet demand.
 
-4. **(Pairs Only) Assumption Verification (Task 4):**  
-   - Analyze the system-wide interarrival times using raw trip data from `raw_trips.csv`.
-   - Assess whether the interarrival times are stationary, independent, and exponentially distributed.
 
 ## File Structure
 
