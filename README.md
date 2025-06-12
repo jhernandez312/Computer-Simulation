@@ -4,30 +4,10 @@
 
 This project simulates infectious disease dynamics using a well-mixed SIR model inspired by Chapter 21 of *Scientific Computing with Case Studies* by Dianne O’Leary. The objective is to explore epidemic behavior by solving ordinary differential equations (ODEs) for susceptible, infected, and recovered populations. A secondary part of the assignment extends the model by introducing vaccination policies.
 
-## Tasks
-
-1. **Well-Mixed SIR Model:**  
-   - Implement the SIR model:
-     - **Equations:**  
-       \[
-       \frac{dS}{dt} = -\tau S I, \quad \frac{dI}{dt} = \tau S I - \frac{I}{\kappa}, \quad \frac{dR}{dt} = \frac{I}{\kappa}
-       \]
-     - **Initial Conditions:**  
-       \(S(0)=0.99\), \(I(0)=0.01\), \(R(0)=0\)
-     - Use an ODE solver (e.g., Scipy’s `solve_ivp` or `odeint`) to simulate the epidemic until the infected fraction drops below \(10^{-4}\).
-
-2. **Parameter Experiments:**  
-   - Simulate the model for different parameter combinations:
-     - \((\tau, \kappa) = (0.8, 4)\), \((0.4, 4)\), and \((0.8, 8)\).
-   - Record the “stopping time” for each simulation and generate plots of \(S(t)\), \(I(t)\), and \(R(t)\).
-
-3. **Parameter Sweep and Contour Plot:**  
-   - Sweep across values of \(\tau \in (0, 4]\) and \(\kappa \in [1, 5]\).  
-   - Create a contour plot or heatmap showing the time required for \(I(t)\) to drop below \(10^{-4}\).
 
 ## File Structure
 
-The repository is organized into several Python modules for clarity and modularity:
+The repository is organized into several Python files:
 
 - **`models.py`**:  
   Contains the ODE definitions for the contagion and vaccination models.
@@ -77,20 +57,7 @@ This project implements a discrete-event simulation to study Citi Bike—New Yor
 
 ## Tasks
 
-1. **Simulator Implementation:**  
-   - **Time Frame:** Simulate one logical day (24 hours) of operation.  
-   - **Stations:** Model each station as a queue.  
-   - **Rider Arrivals:**  
-     - Total number of riders \(n\) arriving randomly according to an exponential interarrival process with mean rate \(\lambda\).  
-     - Each rider selects a station with a probability \(p_i\) from `start_station_probs.csv`.  
-   - **Bike Rental Process:**  
-     - If a bike is available at the chosen station, the rider takes it; otherwise, they wait (simulate unlimited queue capacity).  
-   - **Trip Dynamics:**  
-     - The destination station is chosen based on probabilities \(q_{i,j}\) derived from `trip_stats.csv`.  
-     - Ride times are drawn from a log-normal distribution with mean \(\mu\) and standard deviation \(\sigma\).  
-   - After finishing a trip, the rider returns the bike and leaves the system.
-
-2. **Baseline Experiment:**  
+1. **Baseline Experiment:**  
    - With a fixed allocation of 10 bikes per station and 3,500 riders:
      - Estimate the **probability of a successful rental** (fraction of riders who pick up a bike).
      - Compute the **average waiting time** for riders who successfully get a bike.
@@ -100,7 +67,7 @@ This project implements a discrete-event simulation to study Citi Bike—New Yor
      - Ride times: \(\mu = 2.78\) and \(\sigma = 0.619\).
      - Start station probabilities from `start_station_probs.csv` and destination probabilities \(q_{i,j}\) derived from `trip_stats.csv`.
 
-3. **Idealized Experiment:**  
+2. **Idealized Experiment:**  
    - Investigate a scenario with no limit on the number of bikes per station.
    - Determine, for each station, the minimum number of bikes needed to fully meet demand.
 
